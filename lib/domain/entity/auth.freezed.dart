@@ -97,9 +97,7 @@ class __$$_AuthCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res, _$_Auth>
 /// @nodoc
 
 class _$_Auth implements _Auth {
-  _$_Auth({required this.emailAddress, required this.password})
-      : assert(RegExp(emailRegex).hasMatch(emailAddress)),
-        assert(password.length >= 6);
+  _$_Auth({required this.emailAddress, required this.password});
 
   @override
   final String emailAddress;

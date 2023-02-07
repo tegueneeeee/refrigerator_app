@@ -28,4 +28,37 @@ class AuthHelper {
       return Result.failure("$e");
     }
   }
+
+  Future<Result<Unit>> signInWIthEmailAndPassword(Auth auth) async {
+    final emailAddress = auth.emailAddress;
+    final password = auth.password;
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+      return Result.sucess(unit);
+    } catch (e) {
+      return Result.failure("$e");
+    }
+  }
+
+  Future<Result<Unit>> signInWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        return Result.failure("Cancelled By User");
+      }
+      final googleUserAuthentication = await googleUser.authentication;
+      final authCredential = GoogleAuthProvider.credential(
+        idToken: googleUserAuthentication.idToken,
+        accessToken: googleUserAuthentication.accessToken,
+      );
+      return _firebaseAuth
+          .signInWithCredential(authCredential)
+          .then((value) => Result.sucess(unit));
+    } catch (e) {
+      return Result.failure("$e");
+    }
+  }
 }

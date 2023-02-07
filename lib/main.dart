@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_app/di/provider_setup.dart';
 import 'package:flutter_app/presentation/login/login_page.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: globalProvider,
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

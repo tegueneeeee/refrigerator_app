@@ -4,11 +4,12 @@ import 'package:flutter_app/domain/repository/auth_repository.dart';
 import 'package:flutter_app/infrastructure/data_source/auth_helper.dart';
 import 'package:flutter_app/infrastructure/data_source/result.dart';
 
-class AuthRepositoryImpl implements AuthRepositiry {
+class AuthRepositoryImpl implements AuthRepository {
   final AuthHelper _authHelper;
 
-  AuthRepositoryImpl(this._authHelper);
-  // final GoogleSignIn _googleSignIn;
+  AuthRepositoryImpl(
+    this._authHelper,
+  );
   @override
   Future<Result<Unit>> registerWIthEmailAndPassword({
     required Auth auth,
@@ -23,14 +24,20 @@ class AuthRepositoryImpl implements AuthRepositiry {
   @override
   Future<Result<Unit>> signInWIthEmailAndPassword({
     required Auth auth,
-  }) {
-    // TODO: implement signInWIthEmailAndPassword
-    throw UnimplementedError();
+  }) async {
+    final result = await _authHelper.signInWIthEmailAndPassword(auth);
+    return result.when(
+      sucess: (data) => Result.sucess(data),
+      failure: (message) => Result.failure(message),
+    );
   }
 
   @override
-  Future<Result<Unit>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+  Future<Result<Unit>> signInWithGoogle() async {
+    final result = await _authHelper.signInWithGoogle();
+    return result.when(
+      sucess: (data) => Result.sucess(data),
+      failure: (message) => Result.failure(message),
+    );
   }
 }
