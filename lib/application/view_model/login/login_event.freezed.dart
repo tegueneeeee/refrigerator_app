@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
     required TResult Function(String emailString) emailChanged,
     required TResult Function(String passwordString) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
@@ -27,6 +28,7 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
     TResult? Function(String emailString)? emailChanged,
     TResult? Function(String passwordString)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
@@ -36,6 +38,7 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
     TResult Function(String emailString)? emailChanged,
     TResult Function(String passwordString)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
@@ -46,6 +49,7 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PassowordChanged value) passwordChanged,
     required TResult Function(RegisterWithEmailAndPasswordPressed value)
@@ -58,6 +62,7 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PassowordChanged value)? passwordChanged,
     TResult? Function(RegisterWithEmailAndPasswordPressed value)?
@@ -69,6 +74,7 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PassowordChanged value)? passwordChanged,
     TResult Function(RegisterWithEmailAndPasswordPressed value)?
@@ -97,6 +103,139 @@ class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SetErrorMessageNullCopyWith<$Res> {
+  factory _$$SetErrorMessageNullCopyWith(_$SetErrorMessageNull value,
+          $Res Function(_$SetErrorMessageNull) then) =
+      __$$SetErrorMessageNullCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SetErrorMessageNullCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$SetErrorMessageNull>
+    implements _$$SetErrorMessageNullCopyWith<$Res> {
+  __$$SetErrorMessageNullCopyWithImpl(
+      _$SetErrorMessageNull _value, $Res Function(_$SetErrorMessageNull) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SetErrorMessageNull implements SetErrorMessageNull {
+  const _$SetErrorMessageNull();
+
+  @override
+  String toString() {
+    return 'LoginEvent.setErrorMessageNull()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SetErrorMessageNull);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
+    required TResult Function(String emailString) emailChanged,
+    required TResult Function(String passwordString) passwordChanged,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signInWithGooglePressed,
+  }) {
+    return setErrorMessageNull();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
+    TResult? Function(String emailString)? emailChanged,
+    TResult? Function(String passwordString)? passwordChanged,
+    TResult? Function()? registerWithEmailAndPasswordPressed,
+    TResult? Function()? signInWithEmailAndPasswordPressed,
+    TResult? Function()? signInWithGooglePressed,
+  }) {
+    return setErrorMessageNull?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
+    TResult Function(String emailString)? emailChanged,
+    TResult Function(String passwordString)? passwordChanged,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signInWithGooglePressed,
+    required TResult orElse(),
+  }) {
+    if (setErrorMessageNull != null) {
+      return setErrorMessageNull();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(PassowordChanged value) passwordChanged,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
+    required TResult Function(SignInWithEmailAndPasswordPressed value)
+        signInWithEmailAndPasswordPressed,
+    required TResult Function(SignInWithGooglePressed value)
+        signInWithGooglePressed,
+  }) {
+    return setErrorMessageNull(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
+    TResult? Function(EmailChanged value)? emailChanged,
+    TResult? Function(PassowordChanged value)? passwordChanged,
+    TResult? Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult? Function(SignInWithEmailAndPasswordPressed value)?
+        signInWithEmailAndPasswordPressed,
+    TResult? Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+  }) {
+    return setErrorMessageNull?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(PassowordChanged value)? passwordChanged,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function(SignInWithEmailAndPasswordPressed value)?
+        signInWithEmailAndPasswordPressed,
+    TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    required TResult orElse(),
+  }) {
+    if (setErrorMessageNull != null) {
+      return setErrorMessageNull(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetErrorMessageNull implements LoginEvent {
+  const factory SetErrorMessageNull() = _$SetErrorMessageNull;
 }
 
 /// @nodoc
@@ -164,6 +303,7 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
     required TResult Function(String emailString) emailChanged,
     required TResult Function(String passwordString) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
@@ -176,6 +316,7 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
     TResult? Function(String emailString)? emailChanged,
     TResult? Function(String passwordString)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
@@ -188,6 +329,7 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
     TResult Function(String emailString)? emailChanged,
     TResult Function(String passwordString)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
@@ -204,6 +346,7 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PassowordChanged value) passwordChanged,
     required TResult Function(RegisterWithEmailAndPasswordPressed value)
@@ -219,6 +362,7 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PassowordChanged value)? passwordChanged,
     TResult? Function(RegisterWithEmailAndPasswordPressed value)?
@@ -233,6 +377,7 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PassowordChanged value)? passwordChanged,
     TResult Function(RegisterWithEmailAndPasswordPressed value)?
@@ -323,6 +468,7 @@ class _$PassowordChanged implements PassowordChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
     required TResult Function(String emailString) emailChanged,
     required TResult Function(String passwordString) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
@@ -335,6 +481,7 @@ class _$PassowordChanged implements PassowordChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
     TResult? Function(String emailString)? emailChanged,
     TResult? Function(String passwordString)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
@@ -347,6 +494,7 @@ class _$PassowordChanged implements PassowordChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
     TResult Function(String emailString)? emailChanged,
     TResult Function(String passwordString)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
@@ -363,6 +511,7 @@ class _$PassowordChanged implements PassowordChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PassowordChanged value) passwordChanged,
     required TResult Function(RegisterWithEmailAndPasswordPressed value)
@@ -378,6 +527,7 @@ class _$PassowordChanged implements PassowordChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PassowordChanged value)? passwordChanged,
     TResult? Function(RegisterWithEmailAndPasswordPressed value)?
@@ -392,6 +542,7 @@ class _$PassowordChanged implements PassowordChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PassowordChanged value)? passwordChanged,
     TResult Function(RegisterWithEmailAndPasswordPressed value)?
@@ -461,6 +612,7 @@ class _$RegisterWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
     required TResult Function(String emailString) emailChanged,
     required TResult Function(String passwordString) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
@@ -473,6 +625,7 @@ class _$RegisterWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
     TResult? Function(String emailString)? emailChanged,
     TResult? Function(String passwordString)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
@@ -485,6 +638,7 @@ class _$RegisterWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
     TResult Function(String emailString)? emailChanged,
     TResult Function(String passwordString)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
@@ -501,6 +655,7 @@ class _$RegisterWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PassowordChanged value) passwordChanged,
     required TResult Function(RegisterWithEmailAndPasswordPressed value)
@@ -516,6 +671,7 @@ class _$RegisterWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PassowordChanged value)? passwordChanged,
     TResult? Function(RegisterWithEmailAndPasswordPressed value)?
@@ -530,6 +686,7 @@ class _$RegisterWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PassowordChanged value)? passwordChanged,
     TResult Function(RegisterWithEmailAndPasswordPressed value)?
@@ -593,6 +750,7 @@ class _$SignInWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
     required TResult Function(String emailString) emailChanged,
     required TResult Function(String passwordString) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
@@ -605,6 +763,7 @@ class _$SignInWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
     TResult? Function(String emailString)? emailChanged,
     TResult? Function(String passwordString)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
@@ -617,6 +776,7 @@ class _$SignInWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
     TResult Function(String emailString)? emailChanged,
     TResult Function(String passwordString)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
@@ -633,6 +793,7 @@ class _$SignInWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PassowordChanged value) passwordChanged,
     required TResult Function(RegisterWithEmailAndPasswordPressed value)
@@ -648,6 +809,7 @@ class _$SignInWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PassowordChanged value)? passwordChanged,
     TResult? Function(RegisterWithEmailAndPasswordPressed value)?
@@ -662,6 +824,7 @@ class _$SignInWithEmailAndPasswordPressed
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PassowordChanged value)? passwordChanged,
     TResult Function(RegisterWithEmailAndPasswordPressed value)?
@@ -722,6 +885,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setErrorMessageNull,
     required TResult Function(String emailString) emailChanged,
     required TResult Function(String passwordString) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
@@ -734,6 +898,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setErrorMessageNull,
     TResult? Function(String emailString)? emailChanged,
     TResult? Function(String passwordString)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
@@ -746,6 +911,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setErrorMessageNull,
     TResult Function(String emailString)? emailChanged,
     TResult Function(String passwordString)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
@@ -762,6 +928,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SetErrorMessageNull value) setErrorMessageNull,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PassowordChanged value) passwordChanged,
     required TResult Function(RegisterWithEmailAndPasswordPressed value)
@@ -777,6 +944,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PassowordChanged value)? passwordChanged,
     TResult? Function(RegisterWithEmailAndPasswordPressed value)?
@@ -791,6 +959,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetErrorMessageNull value)? setErrorMessageNull,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PassowordChanged value)? passwordChanged,
     TResult Function(RegisterWithEmailAndPasswordPressed value)?

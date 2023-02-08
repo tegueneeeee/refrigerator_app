@@ -9,12 +9,23 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<LoginViewModel>();
+    if (viewModel.state.errorMessage != null) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) {
+          _displaySnackBar(
+            context,
+            errorMessage: viewModel.state.errorMessage!,
+          );
+          viewModel.onEvent(const LoginEvent.setErrorMessageNull());
+        },
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text("APP TITLE"),
       ),
       body: Form(
-        autovalidateMode: viewModel.state.showErrorMessages,
+        autovalidateMode: viewModel.state.showValidateMessageMode,
         child: ListView(
           children: [
             TextFormField(
@@ -53,9 +64,48 @@ class LoginPage extends StatelessWidget {
                 }
               },
             ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => {
+                      viewModel.onEvent(
+                        const LoginEvent.signInWithEmailAndPasswordPressed(),
+                      )
+                    },
+                    child: const Text('SIGN IN'),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => {
+                      viewModel.onEvent(
+                        const LoginEvent.registerWithEmailAndPasswordPressed(),
+                      )
+                    },
+                    child: const Text('REGISTER'),
+                  ),
+                ),
+              ],
+            ),
+            ElevatedButton(
+              onPressed: () => {
+                viewModel.onEvent(
+                  const LoginEvent.signInWithGooglePressed(),
+                )
+              },
+              child: const Text('SIGN IN WITH GOOGLE'),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  void _displaySnackBar(BuildContext context, {required String errorMessage}) {
+    final snackBar = SnackBar(content: Text(errorMessage));
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

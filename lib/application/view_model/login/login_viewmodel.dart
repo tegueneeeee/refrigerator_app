@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/application/use_case/login_use_cases.dart';
 import 'package:flutter_app/application/view_model/login/login_event.dart';
@@ -11,10 +13,11 @@ class LoginViewModel with ChangeNotifier {
 
   LoginState _state = LoginState.initial(
     auth: Auth(emailAddress: "", password: ""),
-    showErrorMessages: AutovalidateMode.disabled,
+    showValidateMessageMode: AutovalidateMode.disabled,
     isSubmitting: false,
     validatedEmail: false,
     validatedPassword: false,
+    errorMessage: null,
   );
 
   LoginState get state => _state;
@@ -26,6 +29,7 @@ class LoginViewModel with ChangeNotifier {
       registerWithEmailAndPasswordPressed: _registerWithEmailAndPasswordPressed,
       signInWithEmailAndPasswordPressed: _signInWithEmailAndPasswordPressed,
       signInWithGooglePressed: _signInWithGooglePressed,
+      setErrorMessageNull: _setErrorMessageNull,
     );
   }
 
@@ -44,16 +48,40 @@ class LoginViewModel with ChangeNotifier {
   }
 
   Future<void> _registerWithEmailAndPasswordPressed() async {
-    await loginUseCases.registerWithEmailAndPassword(
-      _state.auth,
+    final result =
+        await loginUseCases.registerWithEmailAndPassword(_state.auth);
+    result.when(
+      sucess: (_) => {},
+      failure: (message) => {
+        _state = state.copyWith(errorMessage: message),
+      },
     );
+    notifyListeners();
   }
 
   Future<void> _signInWithEmailAndPasswordPressed() async {
-    await loginUseCases.signInWithEmailAndPassword(_state.auth);
+    final result = await loginUseCases.signInWithEmailAndPassword(_state.auth);
+    result.when(
+      sucess: (_) => {},
+      failure: (message) => {
+        _state = state.copyWith(errorMessage: message),
+      },
+    );
+    notifyListeners();
   }
 
   Future<void> _signInWithGooglePressed() async {
-    await loginUseCases.signInWithGoogle();
+    final result = await loginUseCases.signInWithGoogle();
+    result.when(
+      sucess: (_) => {},
+      failure: (message) => {
+        _state = state.copyWith(errorMessage: message),
+      },
+    );
+    notifyListeners();
+  }
+
+  void _setErrorMessageNull() {
+    _state = state.copyWith(errorMessage: null);
   }
 }

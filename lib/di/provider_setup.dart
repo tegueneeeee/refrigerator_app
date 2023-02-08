@@ -24,7 +24,10 @@ List<SingleChildWidget> independentModels = [
     create: (context) => FirebaseAuth.instance,
   ),
   Provider<GoogleSignIn>(
-    create: (context) => GoogleSignIn(),
+    create: (context) => GoogleSignIn(
+      clientId:
+          '941885027009-c9krbs820ri6si5bndk3f79ovgtgs60r.apps.googleusercontent.com',
+    ),
   ),
 ];
 

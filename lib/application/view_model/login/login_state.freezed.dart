@@ -17,28 +17,45 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LoginState {
   Auth get auth => throw _privateConstructorUsedError;
-  AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
+  AutovalidateMode get showValidateMessageMode =>
+      throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get validatedEmail => throw _privateConstructorUsedError;
   bool get validatedPassword => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Auth auth, AutovalidateMode showErrorMessages,
-            bool isSubmitting, bool validatedEmail, bool validatedPassword)
+    required TResult Function(
+            Auth auth,
+            AutovalidateMode showValidateMessageMode,
+            bool isSubmitting,
+            bool validatedEmail,
+            bool validatedPassword,
+            String? errorMessage)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Auth auth, AutovalidateMode showErrorMessages,
-            bool isSubmitting, bool validatedEmail, bool validatedPassword)?
+    TResult? Function(
+            Auth auth,
+            AutovalidateMode showValidateMessageMode,
+            bool isSubmitting,
+            bool validatedEmail,
+            bool validatedPassword,
+            String? errorMessage)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Auth auth, AutovalidateMode showErrorMessages,
-            bool isSubmitting, bool validatedEmail, bool validatedPassword)?
+    TResult Function(
+            Auth auth,
+            AutovalidateMode showValidateMessageMode,
+            bool isSubmitting,
+            bool validatedEmail,
+            bool validatedPassword,
+            String? errorMessage)?
         initial,
     required TResult orElse(),
   }) =>
@@ -73,10 +90,11 @@ abstract class $LoginStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Auth auth,
-      AutovalidateMode showErrorMessages,
+      AutovalidateMode showValidateMessageMode,
       bool isSubmitting,
       bool validatedEmail,
-      bool validatedPassword});
+      bool validatedPassword,
+      String? errorMessage});
 
   $AuthCopyWith<$Res> get auth;
 }
@@ -95,19 +113,20 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @override
   $Res call({
     Object? auth = null,
-    Object? showErrorMessages = null,
+    Object? showValidateMessageMode = null,
     Object? isSubmitting = null,
     Object? validatedEmail = null,
     Object? validatedPassword = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       auth: null == auth
           ? _value.auth
           : auth // ignore: cast_nullable_to_non_nullable
               as Auth,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+      showValidateMessageMode: null == showValidateMessageMode
+          ? _value.showValidateMessageMode
+          : showValidateMessageMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -121,6 +140,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.validatedPassword
           : validatedPassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -143,10 +166,11 @@ abstract class _$$_LoginStateCopyWith<$Res>
   @useResult
   $Res call(
       {Auth auth,
-      AutovalidateMode showErrorMessages,
+      AutovalidateMode showValidateMessageMode,
       bool isSubmitting,
       bool validatedEmail,
-      bool validatedPassword});
+      bool validatedPassword,
+      String? errorMessage});
 
   @override
   $AuthCopyWith<$Res> get auth;
@@ -164,19 +188,20 @@ class __$$_LoginStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? auth = null,
-    Object? showErrorMessages = null,
+    Object? showValidateMessageMode = null,
     Object? isSubmitting = null,
     Object? validatedEmail = null,
     Object? validatedPassword = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$_LoginState(
       auth: null == auth
           ? _value.auth
           : auth // ignore: cast_nullable_to_non_nullable
               as Auth,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+      showValidateMessageMode: null == showValidateMessageMode
+          ? _value.showValidateMessageMode
+          : showValidateMessageMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -190,6 +215,10 @@ class __$$_LoginStateCopyWithImpl<$Res>
           ? _value.validatedPassword
           : validatedPassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -199,25 +228,28 @@ class __$$_LoginStateCopyWithImpl<$Res>
 class _$_LoginState implements _LoginState {
   _$_LoginState(
       {required this.auth,
-      required this.showErrorMessages,
+      required this.showValidateMessageMode,
       required this.isSubmitting,
       required this.validatedEmail,
-      required this.validatedPassword});
+      required this.validatedPassword,
+      required this.errorMessage});
 
   @override
   final Auth auth;
   @override
-  final AutovalidateMode showErrorMessages;
+  final AutovalidateMode showValidateMessageMode;
   @override
   final bool isSubmitting;
   @override
   final bool validatedEmail;
   @override
   final bool validatedPassword;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'LoginState.initial(auth: $auth, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, validatedEmail: $validatedEmail, validatedPassword: $validatedPassword)';
+    return 'LoginState.initial(auth: $auth, showValidateMessageMode: $showValidateMessageMode, isSubmitting: $isSubmitting, validatedEmail: $validatedEmail, validatedPassword: $validatedPassword, errorMessage: $errorMessage)';
   }
 
   @override
@@ -226,19 +258,22 @@ class _$_LoginState implements _LoginState {
         (other.runtimeType == runtimeType &&
             other is _$_LoginState &&
             (identical(other.auth, auth) || other.auth == auth) &&
-            (identical(other.showErrorMessages, showErrorMessages) ||
-                other.showErrorMessages == showErrorMessages) &&
+            (identical(
+                    other.showValidateMessageMode, showValidateMessageMode) ||
+                other.showValidateMessageMode == showValidateMessageMode) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.validatedEmail, validatedEmail) ||
                 other.validatedEmail == validatedEmail) &&
             (identical(other.validatedPassword, validatedPassword) ||
-                other.validatedPassword == validatedPassword));
+                other.validatedPassword == validatedPassword) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, auth, showErrorMessages,
-      isSubmitting, validatedEmail, validatedPassword);
+  int get hashCode => Object.hash(runtimeType, auth, showValidateMessageMode,
+      isSubmitting, validatedEmail, validatedPassword, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -249,36 +284,51 @@ class _$_LoginState implements _LoginState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Auth auth, AutovalidateMode showErrorMessages,
-            bool isSubmitting, bool validatedEmail, bool validatedPassword)
+    required TResult Function(
+            Auth auth,
+            AutovalidateMode showValidateMessageMode,
+            bool isSubmitting,
+            bool validatedEmail,
+            bool validatedPassword,
+            String? errorMessage)
         initial,
   }) {
-    return initial(auth, showErrorMessages, isSubmitting, validatedEmail,
-        validatedPassword);
+    return initial(auth, showValidateMessageMode, isSubmitting, validatedEmail,
+        validatedPassword, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Auth auth, AutovalidateMode showErrorMessages,
-            bool isSubmitting, bool validatedEmail, bool validatedPassword)?
+    TResult? Function(
+            Auth auth,
+            AutovalidateMode showValidateMessageMode,
+            bool isSubmitting,
+            bool validatedEmail,
+            bool validatedPassword,
+            String? errorMessage)?
         initial,
   }) {
-    return initial?.call(auth, showErrorMessages, isSubmitting, validatedEmail,
-        validatedPassword);
+    return initial?.call(auth, showValidateMessageMode, isSubmitting,
+        validatedEmail, validatedPassword, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Auth auth, AutovalidateMode showErrorMessages,
-            bool isSubmitting, bool validatedEmail, bool validatedPassword)?
+    TResult Function(
+            Auth auth,
+            AutovalidateMode showValidateMessageMode,
+            bool isSubmitting,
+            bool validatedEmail,
+            bool validatedPassword,
+            String? errorMessage)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(auth, showErrorMessages, isSubmitting, validatedEmail,
-          validatedPassword);
+      return initial(auth, showValidateMessageMode, isSubmitting,
+          validatedEmail, validatedPassword, errorMessage);
     }
     return orElse();
   }
@@ -315,21 +365,24 @@ class _$_LoginState implements _LoginState {
 abstract class _LoginState implements LoginState {
   factory _LoginState(
       {required final Auth auth,
-      required final AutovalidateMode showErrorMessages,
+      required final AutovalidateMode showValidateMessageMode,
       required final bool isSubmitting,
       required final bool validatedEmail,
-      required final bool validatedPassword}) = _$_LoginState;
+      required final bool validatedPassword,
+      required final String? errorMessage}) = _$_LoginState;
 
   @override
   Auth get auth;
   @override
-  AutovalidateMode get showErrorMessages;
+  AutovalidateMode get showValidateMessageMode;
   @override
   bool get isSubmitting;
   @override
   bool get validatedEmail;
   @override
   bool get validatedPassword;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>

@@ -8,9 +8,10 @@ part 'login_state.freezed.dart';
 class LoginState with _$LoginState {
   factory LoginState.initial({
     required Auth auth,
-    required AutovalidateMode showErrorMessages,
+    required AutovalidateMode showValidateMessageMode,
     required bool isSubmitting,
     required bool validatedEmail,
     required bool validatedPassword,
+    required String? errorMessage,
   }) = _LoginState;
 }

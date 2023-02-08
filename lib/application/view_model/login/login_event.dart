@@ -4,6 +4,7 @@ part 'login_event.freezed.dart';
 
 @freezed
 class LoginEvent with _$LoginEvent {
+  const factory LoginEvent.setErrorMessageNull() = SetErrorMessageNull;
   const factory LoginEvent.emailChanged(String emailString) = EmailChanged;
   const factory LoginEvent.passwordChanged(String passwordString) =
       PassowordChanged;

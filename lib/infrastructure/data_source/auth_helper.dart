@@ -38,7 +38,7 @@ class AuthHelper {
         password: password,
       );
       return Result.sucess(unit);
-    } catch (e) {
+    } on FirebaseException catch (e) {
       return Result.failure("$e");
     }
   }
@@ -49,14 +49,15 @@ class AuthHelper {
       if (googleUser == null) {
         return Result.failure("Cancelled By User");
       }
-      final googleUserAuthentication = await googleUser.authentication;
-      final authCredential = GoogleAuthProvider.credential(
-        idToken: googleUserAuthentication.idToken,
-        accessToken: googleUserAuthentication.accessToken,
-      );
-      return _firebaseAuth
-          .signInWithCredential(authCredential)
-          .then((value) => Result.sucess(unit));
+      // final googleUserAuthentication = await googleUser.authentication;
+      // final authCredential = GoogleAuthProvider.credential(
+      //   idToken: googleUserAuthentication.idToken,
+      //   accessToken: googleUserAuthentication.accessToken,
+      // );
+      // return _firebaseAuth
+      //     .signInWithCredential(authCredential)
+      //     .then((value) => Result.sucess(unit));
+      return Result.sucess(unit);
     } catch (e) {
       return Result.failure("$e");
     }
