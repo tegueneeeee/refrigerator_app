@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_app/domain/entity/auth.dart';
-import 'package:flutter_app/domain/repository/auth_repository.dart';
+import 'package:flutter_app/domain/auth/value/email_address.dart';
+import 'package:flutter_app/domain/auth/value/password.dart';
 import 'package:flutter_app/infrastructure/data_source/auth_helper.dart';
 import 'package:flutter_app/infrastructure/data_source/result.dart';
+import 'package:flutter_app/domain/auth/repository/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthHelper _authHelper;
@@ -12,9 +13,13 @@ class AuthRepositoryImpl implements AuthRepository {
   );
   @override
   Future<Result<Unit>> registerWIthEmailAndPassword({
-    required Auth auth,
+    required EmailAddress emailAddress,
+    required Password password,
   }) async {
-    final result = await _authHelper.createUserWithEmailAndPassword(auth);
+    final result = await _authHelper.createUserWithEmailAndPassword(
+      emailAddress: emailAddress,
+      password: password,
+    );
     return result.when(
       sucess: (data) => Result.sucess(data),
       failure: (message) => Result.failure(message),
@@ -23,9 +28,13 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Result<Unit>> signInWIthEmailAndPassword({
-    required Auth auth,
+    required EmailAddress emailAddress,
+    required Password password,
   }) async {
-    final result = await _authHelper.signInWIthEmailAndPassword(auth);
+    final result = await _authHelper.signInWIthEmailAndPassword(
+      emailAddress: emailAddress,
+      password: password,
+    );
     return result.when(
       sucess: (data) => Result.sucess(data),
       failure: (message) => Result.failure(message),
@@ -35,6 +44,17 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<Unit>> signInWithGoogle() async {
     final result = await _authHelper.signInWithGoogle();
+    return result.when(
+      sucess: (data) => Result.sucess(data),
+      failure: (message) => Result.failure(message),
+    );
+  }
+
+  @override
+  Future<Result<bool>> validatorPassword({
+    required Password password,
+  }) async {
+    final result = await _authHelper.validatePassword(password: password);
     return result.when(
       sucess: (data) => Result.sucess(data),
       failure: (message) => Result.failure(message),

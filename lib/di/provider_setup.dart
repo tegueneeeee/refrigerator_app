@@ -6,7 +6,7 @@ import 'package:flutter_app/application/use_case/login/validator_email.dart';
 import 'package:flutter_app/application/use_case/login/validator_password.dart';
 import 'package:flutter_app/application/use_case/login_use_cases.dart';
 import 'package:flutter_app/application/view_model/login/login_viewmodel.dart';
-import 'package:flutter_app/domain/repository/auth_repository.dart';
+import 'package:flutter_app/domain/auth/repository/auth_repository.dart';
 import 'package:flutter_app/infrastructure/data_source/auth_helper.dart';
 import 'package:flutter_app/infrastructure/repository/auth_repository_impl.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -42,7 +42,7 @@ List<SingleChildWidget> dependentModels = [
   ProxyProvider<AuthRepository, LoginUseCases>(
     update: (context, repository, _) => LoginUseCases(
       validatorEmail: ValidatorEmail(),
-      validatorPassword: ValidatorPassword(),
+      validatorPassword: ValidatorPassword(repository),
       registerWithEmailAndPassword: RegisterWithEmailAndPassword(repository),
       signInWithEmailAndPassword: SignInWithEmailAndPassword(repository),
       signInWithGoogle: SignInWithGoogle(repository),

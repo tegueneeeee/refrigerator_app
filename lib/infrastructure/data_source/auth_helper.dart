@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app/domain/auth/value/email_address.dart';
+import 'package:flutter_app/domain/auth/value/password.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:flutter_app/domain/entity/auth.dart';
 import 'package:flutter_app/infrastructure/data_source/result.dart';
 
 class AuthHelper {
@@ -15,13 +16,14 @@ class AuthHelper {
     this._googleSignIn,
   );
 
-  Future<Result<Unit>> createUserWithEmailAndPassword(Auth auth) async {
-    final emailAddress = auth.emailAddress;
-    final password = auth.password;
+  Future<Result<Unit>> createUserWithEmailAndPassword({
+    required EmailAddress emailAddress,
+    required Password password,
+  }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
+        email: emailAddress.value,
+        password: password.value,
       );
       return Result.sucess(unit);
     } catch (e) {
@@ -29,13 +31,14 @@ class AuthHelper {
     }
   }
 
-  Future<Result<Unit>> signInWIthEmailAndPassword(Auth auth) async {
-    final emailAddress = auth.emailAddress;
-    final password = auth.password;
+  Future<Result<Unit>> signInWIthEmailAndPassword({
+    required EmailAddress emailAddress,
+    required Password password,
+  }) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
+        email: emailAddress.value,
+        password: password.value,
       );
       return Result.sucess(unit);
     } on FirebaseException catch (e) {
@@ -49,15 +52,24 @@ class AuthHelper {
       if (googleUser == null) {
         return Result.failure("Cancelled By User");
       }
-      // final googleUserAuthentication = await googleUser.authentication;
-      // final authCredential = GoogleAuthProvider.credential(
-      //   idToken: googleUserAuthentication.idToken,
-      //   accessToken: googleUserAuthentication.accessToken,
-      // );
-      // return _firebaseAuth
-      //     .signInWithCredential(authCredential)
-      //     .then((value) => Result.sucess(unit));
-      return Result.sucess(unit);
+      final googleUserAuthentication = await googleUser.authentication;
+      final authCredential = GoogleAuthProvider.credential(
+        idToken: googleUserAuthentication.idToken,
+        accessToken: googleUserAuthentication.accessToken,
+      );
+      return _firebaseAuth
+          .signInWithCredential(authCredential)
+          .then((value) => Result.sucess(unit));
+    } catch (e) {
+      return Result.failure("$e");
+    }
+  }
+
+  Future<Result<bool>> validatePassword({
+    required Password password,
+  }) async {
+    try {
+      return Result.sucess(true);
     } catch (e) {
       return Result.failure("$e");
     }

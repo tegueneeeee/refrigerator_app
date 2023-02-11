@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/application/use_case/login_use_cases.dart';
 import 'package:flutter_app/application/view_model/login/login_event.dart';
 import 'package:flutter_app/application/view_model/login/login_state.dart';
-import 'package:flutter_app/domain/entity/auth.dart';
+import 'package:flutter_app/domain/auth/value/email_address.dart';
+import 'package:flutter_app/domain/auth/value/password.dart';
 
 class LoginViewModel with ChangeNotifier {
   final LoginUseCases loginUseCases;
@@ -12,12 +13,13 @@ class LoginViewModel with ChangeNotifier {
   LoginViewModel(this.loginUseCases);
 
   LoginState _state = LoginState.initial(
-    auth: Auth(emailAddress: "", password: ""),
     showValidateMessageMode: AutovalidateMode.disabled,
     isSubmitting: false,
     validatedEmail: false,
     validatedPassword: false,
     errorMessage: null,
+    emailAddress: EmailAddress(""),
+    password: Password(""),
   );
 
   LoginState get state => _state;
@@ -35,21 +37,27 @@ class LoginViewModel with ChangeNotifier {
 
   Future<void> _emailChanged(String emailString) async {
     _state = state.copyWith(
+      emailAddress: EmailAddress(emailString),
       validatedEmail: loginUseCases.validatorEmail(emailString),
     );
     notifyListeners();
   }
 
   Future<void> _passwordChanged(String passwordString) async {
-    _state = state.copyWith(
-      validatedPassword: loginUseCases.validatorPassword(passwordString),
-    );
+    final result = loginUseCases.validatorPassword(passwordString);
+
+    // state = state.copyWith(
+    //   password: Password(passwordString),
+    //   validatedPassword: loginUseCases.validatorPassword(passwordString),
+    // );
     notifyListeners();
   }
 
   Future<void> _registerWithEmailAndPasswordPressed() async {
-    final result =
-        await loginUseCases.registerWithEmailAndPassword(_state.auth);
+    final result = await loginUseCases.registerWithEmailAndPassword(
+      emailAddress: _state.emailAddress,
+      password: _state.password,
+    );
     result.when(
       sucess: (_) => {},
       failure: (message) => {
@@ -60,7 +68,10 @@ class LoginViewModel with ChangeNotifier {
   }
 
   Future<void> _signInWithEmailAndPasswordPressed() async {
-    final result = await loginUseCases.signInWithEmailAndPassword(_state.auth);
+    final result = await loginUseCases.signInWithEmailAndPassword(
+      emailAddress: _state.emailAddress,
+      password: _state.password,
+    );
     result.when(
       sucess: (_) => {},
       failure: (message) => {
