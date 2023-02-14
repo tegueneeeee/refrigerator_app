@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
-import 'package:flutter_app/infrastructure/data_source/result.dart';
+import 'package:flutter_app/infrastructure/core/result.dart';
 
 abstract class AuthRepository {
   Future<Result<Unit>> registerWIthEmailAndPassword({
@@ -13,7 +13,10 @@ abstract class AuthRepository {
     @PasswordConverter() required Password password,
   });
   Future<Result<Unit>> signInWithGoogle();
+  Future<Result<bool>> validatorEmailAddress({
+    required EmailAddress emailAddress,
+  });
   Future<Result<bool>> validatorPassword({
-    @PasswordConverter() required Password password,
+    required Password password,
   });
 }

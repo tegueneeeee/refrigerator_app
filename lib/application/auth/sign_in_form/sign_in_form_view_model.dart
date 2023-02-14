@@ -1,30 +1,28 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_event.dart';
+import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_state.dart';
 import 'package:flutter_app/application/use_case/login_use_cases.dart';
-import 'package:flutter_app/application/view_model/login/login_event.dart';
-import 'package:flutter_app/application/view_model/login/login_state.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
 
-class LoginViewModel with ChangeNotifier {
+class SignInFormViewModel with ChangeNotifier {
   final LoginUseCases loginUseCases;
 
-  LoginViewModel(this.loginUseCases);
+  SignInFormViewModel(this.loginUseCases);
 
-  LoginState _state = LoginState.initial(
+  SignInFormState _state = SignInFormState.initial(
     showValidateMessageMode: AutovalidateMode.disabled,
     isSubmitting: false,
-    validatedEmail: false,
-    validatedPassword: false,
     errorMessage: null,
-    emailAddress: EmailAddress(""),
-    password: Password(""),
+    emailAddress: EmailAddress.empty(),
+    password: Password.empty(),
   );
 
-  LoginState get state => _state;
+  SignInFormState get state => _state;
 
-  void onEvent(LoginEvent event) {
+  void onEvent(SignInFormEvent event) {
     event.when(
       emailChanged: _emailChanged,
       passwordChanged: _passwordChanged,
@@ -35,21 +33,19 @@ class LoginViewModel with ChangeNotifier {
     );
   }
 
-  Future<void> _emailChanged(String emailString) async {
+  Future<void> _emailChanged(String emailAddressString) async {
+    final emailAddress = EmailAddress(value: emailAddressString);
     _state = state.copyWith(
-      emailAddress: EmailAddress(emailString),
-      validatedEmail: loginUseCases.validatorEmail(emailString),
+      emailAddress: emailAddress,
     );
     notifyListeners();
   }
 
   Future<void> _passwordChanged(String passwordString) async {
-    final result = loginUseCases.validatorPassword(passwordString);
-
-    // state = state.copyWith(
-    //   password: Password(passwordString),
-    //   validatedPassword: loginUseCases.validatorPassword(passwordString),
-    // );
+    final password = Password(value: passwordString);
+    _state = state.copyWith(
+      password: password,
+    );
     notifyListeners();
   }
 
@@ -61,7 +57,9 @@ class LoginViewModel with ChangeNotifier {
     result.when(
       sucess: (_) => {},
       failure: (message) => {
-        _state = state.copyWith(errorMessage: message),
+        _state = state.copyWith(
+            showValidateMessageMode: AutovalidateMode.always,
+            errorMessage: message),
       },
     );
     notifyListeners();
@@ -75,7 +73,10 @@ class LoginViewModel with ChangeNotifier {
     result.when(
       sucess: (_) => {},
       failure: (message) => {
-        _state = state.copyWith(errorMessage: message),
+        _state = state.copyWith(
+          showValidateMessageMode: AutovalidateMode.always,
+          errorMessage: message,
+        ),
       },
     );
     notifyListeners();

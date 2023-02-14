@@ -81,7 +81,7 @@ class __$$_EmailAddressCopyWithImpl<$Res>
     Object? value = null,
   }) {
     return _then(_$_EmailAddress(
-      null == value
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
@@ -91,8 +91,8 @@ class __$$_EmailAddressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EmailAddress implements _EmailAddress {
-  _$_EmailAddress(this.value) : assert(RegExp(emailRegex).hasMatch(value));
+class _$_EmailAddress extends _EmailAddress {
+  const _$_EmailAddress({required this.value}) : super._();
 
   @override
   final String value;
@@ -120,8 +120,9 @@ class _$_EmailAddress implements _EmailAddress {
       __$$_EmailAddressCopyWithImpl<_$_EmailAddress>(this, _$identity);
 }
 
-abstract class _EmailAddress implements EmailAddress {
-  factory _EmailAddress(final String value) = _$_EmailAddress;
+abstract class _EmailAddress extends EmailAddress {
+  const factory _EmailAddress({required final String value}) = _$_EmailAddress;
+  const _EmailAddress._() : super._();
 
   @override
   String get value;

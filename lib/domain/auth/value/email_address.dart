@@ -5,9 +5,16 @@ const emailRegex =
     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
 
 @freezed
-class EmailAddress with _$EmailAddress {
-  @Assert('RegExp(emailRegex).hasMatch(value)')
-  factory EmailAddress(String value) = _EmailAddress;
+abstract class EmailAddress with _$EmailAddress {
+  const EmailAddress._();
+
+  const factory EmailAddress({
+    required String value,
+  }) = _EmailAddress;
+
+  factory EmailAddress.empty() => const EmailAddress(value: "");
+
+  bool get isValid => value.isNotEmpty && RegExp(emailRegex).hasMatch(value);
 }
 
 class EmailAddressConverter implements JsonConverter<EmailAddress, String> {
@@ -15,7 +22,7 @@ class EmailAddressConverter implements JsonConverter<EmailAddress, String> {
 
   @override
   EmailAddress fromJson(String value) {
-    return EmailAddress(value);
+    return EmailAddress(value: value);
   }
 
   @override

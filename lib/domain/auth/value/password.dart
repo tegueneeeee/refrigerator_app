@@ -4,8 +4,14 @@ part 'password.freezed.dart';
 
 @freezed
 class Password with _$Password {
-  @Assert('value.length >= 6')
-  const factory Password(String value) = _Password;
+  const Password._();
+  const factory Password({
+    required String value,
+  }) = _Password;
+
+  factory Password.empty() => const Password(value: "");
+
+  bool get isValid => value.length >= 6;
 }
 
 class PasswordConverter implements JsonConverter<Password, String> {
@@ -13,7 +19,7 @@ class PasswordConverter implements JsonConverter<Password, String> {
 
   @override
   Password fromJson(String value) {
-    return Password(value);
+    return Password(value: value);
   }
 
   @override

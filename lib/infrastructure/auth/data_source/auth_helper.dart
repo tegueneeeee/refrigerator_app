@@ -4,8 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import 'package:flutter_app/infrastructure/data_source/result.dart';
+import 'package:flutter_app/infrastructure/core/result.dart';
 
 class AuthHelper {
   final FirebaseAuth _firebaseAuth;
@@ -65,13 +64,23 @@ class AuthHelper {
     }
   }
 
-  Future<Result<bool>> validatePassword({
+  Future<Result<EmailAddress>> validateEmailAddress({
+    required EmailAddress emailAddress,
+  }) async {
+    if (emailAddress.isValid) {
+      return Result.sucess(emailAddress);
+    } else {
+      return Result.failure("");
+    }
+  }
+
+  Future<Result<Password>> validatePassword({
     required Password password,
   }) async {
-    try {
-      return Result.sucess(true);
-    } catch (e) {
-      return Result.failure("$e");
+    if (password.isValid) {
+      return Result.sucess(password);
+    } else {
+      return Result.failure("");
     }
   }
 }

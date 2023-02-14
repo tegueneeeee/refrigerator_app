@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_event.dart';
+part of 'sign_in_form_event.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginEvent {
+mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setErrorMessageNull,
@@ -88,16 +88,16 @@ mixin _$LoginEvent {
 }
 
 /// @nodoc
-abstract class $LoginEventCopyWith<$Res> {
-  factory $LoginEventCopyWith(
-          LoginEvent value, $Res Function(LoginEvent) then) =
-      _$LoginEventCopyWithImpl<$Res, LoginEvent>;
+abstract class $SignInFormEventCopyWith<$Res> {
+  factory $SignInFormEventCopyWith(
+          SignInFormEvent value, $Res Function(SignInFormEvent) then) =
+      _$SignInFormEventCopyWithImpl<$Res, SignInFormEvent>;
 }
 
 /// @nodoc
-class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
-    implements $LoginEventCopyWith<$Res> {
-  _$LoginEventCopyWithImpl(this._value, this._then);
+class _$SignInFormEventCopyWithImpl<$Res, $Val extends SignInFormEvent>
+    implements $SignInFormEventCopyWith<$Res> {
+  _$SignInFormEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -114,7 +114,7 @@ abstract class _$$SetErrorMessageNullCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetErrorMessageNullCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$SetErrorMessageNull>
+    extends _$SignInFormEventCopyWithImpl<$Res, _$SetErrorMessageNull>
     implements _$$SetErrorMessageNullCopyWith<$Res> {
   __$$SetErrorMessageNullCopyWithImpl(
       _$SetErrorMessageNull _value, $Res Function(_$SetErrorMessageNull) _then)
@@ -128,7 +128,7 @@ class _$SetErrorMessageNull implements SetErrorMessageNull {
 
   @override
   String toString() {
-    return 'LoginEvent.setErrorMessageNull()';
+    return 'SignInFormEvent.setErrorMessageNull()';
   }
 
   @override
@@ -234,7 +234,7 @@ class _$SetErrorMessageNull implements SetErrorMessageNull {
   }
 }
 
-abstract class SetErrorMessageNull implements LoginEvent {
+abstract class SetErrorMessageNull implements SignInFormEvent {
   const factory SetErrorMessageNull() = _$SetErrorMessageNull;
 }
 
@@ -249,7 +249,7 @@ abstract class _$$EmailChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$EmailChangedCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$EmailChanged>
+    extends _$SignInFormEventCopyWithImpl<$Res, _$EmailChanged>
     implements _$$EmailChangedCopyWith<$Res> {
   __$$EmailChangedCopyWithImpl(
       _$EmailChanged _value, $Res Function(_$EmailChanged) _then)
@@ -279,7 +279,7 @@ class _$EmailChanged implements EmailChanged {
 
   @override
   String toString() {
-    return 'LoginEvent.emailChanged(emailString: $emailString)';
+    return 'SignInFormEvent.emailChanged(emailString: $emailString)';
   }
 
   @override
@@ -394,7 +394,7 @@ class _$EmailChanged implements EmailChanged {
   }
 }
 
-abstract class EmailChanged implements LoginEvent {
+abstract class EmailChanged implements SignInFormEvent {
   const factory EmailChanged(final String emailString) = _$EmailChanged;
 
   String get emailString;
@@ -414,7 +414,7 @@ abstract class _$$PassowordChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$PassowordChangedCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$PassowordChanged>
+    extends _$SignInFormEventCopyWithImpl<$Res, _$PassowordChanged>
     implements _$$PassowordChangedCopyWith<$Res> {
   __$$PassowordChangedCopyWithImpl(
       _$PassowordChanged _value, $Res Function(_$PassowordChanged) _then)
@@ -444,7 +444,7 @@ class _$PassowordChanged implements PassowordChanged {
 
   @override
   String toString() {
-    return 'LoginEvent.passwordChanged(passwordString: $passwordString)';
+    return 'SignInFormEvent.passwordChanged(passwordString: $passwordString)';
   }
 
   @override
@@ -559,7 +559,7 @@ class _$PassowordChanged implements PassowordChanged {
   }
 }
 
-abstract class PassowordChanged implements LoginEvent {
+abstract class PassowordChanged implements SignInFormEvent {
   const factory PassowordChanged(final String passwordString) =
       _$PassowordChanged;
 
@@ -579,7 +579,7 @@ abstract class _$$RegisterWithEmailAndPasswordPressedCopyWith<$Res> {
 
 /// @nodoc
 class __$$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res,
+    extends _$SignInFormEventCopyWithImpl<$Res,
         _$RegisterWithEmailAndPasswordPressed>
     implements _$$RegisterWithEmailAndPasswordPressedCopyWith<$Res> {
   __$$RegisterWithEmailAndPasswordPressedCopyWithImpl(
@@ -596,7 +596,7 @@ class _$RegisterWithEmailAndPasswordPressed
 
   @override
   String toString() {
-    return 'LoginEvent.registerWithEmailAndPasswordPressed()';
+    return 'SignInFormEvent.registerWithEmailAndPasswordPressed()';
   }
 
   @override
@@ -703,7 +703,7 @@ class _$RegisterWithEmailAndPasswordPressed
   }
 }
 
-abstract class RegisterWithEmailAndPasswordPressed implements LoginEvent {
+abstract class RegisterWithEmailAndPasswordPressed implements SignInFormEvent {
   const factory RegisterWithEmailAndPasswordPressed() =
       _$RegisterWithEmailAndPasswordPressed;
 }
@@ -718,7 +718,8 @@ abstract class _$$SignInWithEmailAndPasswordPressedCopyWith<$Res> {
 
 /// @nodoc
 class __$$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$SignInWithEmailAndPasswordPressed>
+    extends _$SignInFormEventCopyWithImpl<$Res,
+        _$SignInWithEmailAndPasswordPressed>
     implements _$$SignInWithEmailAndPasswordPressedCopyWith<$Res> {
   __$$SignInWithEmailAndPasswordPressedCopyWithImpl(
       _$SignInWithEmailAndPasswordPressed _value,
@@ -734,7 +735,7 @@ class _$SignInWithEmailAndPasswordPressed
 
   @override
   String toString() {
-    return 'LoginEvent.signInWithEmailAndPasswordPressed()';
+    return 'SignInFormEvent.signInWithEmailAndPasswordPressed()';
   }
 
   @override
@@ -841,7 +842,7 @@ class _$SignInWithEmailAndPasswordPressed
   }
 }
 
-abstract class SignInWithEmailAndPasswordPressed implements LoginEvent {
+abstract class SignInWithEmailAndPasswordPressed implements SignInFormEvent {
   const factory SignInWithEmailAndPasswordPressed() =
       _$SignInWithEmailAndPasswordPressed;
 }
@@ -855,7 +856,7 @@ abstract class _$$SignInWithGooglePressedCopyWith<$Res> {
 
 /// @nodoc
 class __$$SignInWithGooglePressedCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$SignInWithGooglePressed>
+    extends _$SignInFormEventCopyWithImpl<$Res, _$SignInWithGooglePressed>
     implements _$$SignInWithGooglePressedCopyWith<$Res> {
   __$$SignInWithGooglePressedCopyWithImpl(_$SignInWithGooglePressed _value,
       $Res Function(_$SignInWithGooglePressed) _then)
@@ -869,7 +870,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
 
   @override
   String toString() {
-    return 'LoginEvent.signInWithGooglePressed()';
+    return 'SignInFormEvent.signInWithGooglePressed()';
   }
 
   @override
@@ -976,6 +977,6 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   }
 }
 
-abstract class SignInWithGooglePressed implements LoginEvent {
+abstract class SignInWithGooglePressed implements SignInFormEvent {
   const factory SignInWithGooglePressed() = _$SignInWithGooglePressed;
 }

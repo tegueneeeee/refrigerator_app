@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_app/domain/auth/repository/auth_repository.dart';
-import 'package:flutter_app/infrastructure/data_source/result.dart';
+import 'package:flutter_app/infrastructure/core/result.dart';
 
 class SignInWithGoogle {
   final AuthRepository repository;

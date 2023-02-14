@@ -79,7 +79,7 @@ class __$$_PasswordCopyWithImpl<$Res>
     Object? value = null,
   }) {
     return _then(_$_Password(
-      null == value
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
@@ -89,8 +89,8 @@ class __$$_PasswordCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Password implements _Password {
-  const _$_Password(this.value) : assert(value.length >= 6);
+class _$_Password extends _Password {
+  const _$_Password({required this.value}) : super._();
 
   @override
   final String value;
@@ -118,8 +118,9 @@ class _$_Password implements _Password {
       __$$_PasswordCopyWithImpl<_$_Password>(this, _$identity);
 }
 
-abstract class _Password implements Password {
-  const factory _Password(final String value) = _$_Password;
+abstract class _Password extends Password {
+  const factory _Password({required final String value}) = _$_Password;
+  const _Password._() : super._();
 
   @override
   String get value;

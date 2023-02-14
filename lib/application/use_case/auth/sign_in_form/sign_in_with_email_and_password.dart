@@ -2,18 +2,18 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/repository/auth_repository.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
-import 'package:flutter_app/infrastructure/data_source/result.dart';
+import 'package:flutter_app/infrastructure/core/result.dart';
 
-class RegisterWithEmailAndPassword {
+class SignInWithEmailAndPassword {
   final AuthRepository repository;
 
-  RegisterWithEmailAndPassword(this.repository);
+  SignInWithEmailAndPassword(this.repository);
 
   Future<Result<Unit>> call({
     required EmailAddress emailAddress,
     required Password password,
   }) async {
-    final result = await repository.registerWIthEmailAndPassword(
+    final result = await repository.signInWIthEmailAndPassword(
       emailAddress: emailAddress,
       password: password,
     );

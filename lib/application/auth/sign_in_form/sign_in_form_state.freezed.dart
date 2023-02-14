@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_state.dart';
+part of 'sign_in_form_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,14 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginState {
+mixin _$SignInFormState {
   AutovalidateMode get showValidateMessageMode =>
       throw _privateConstructorUsedError;
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  bool get validatedEmail => throw _privateConstructorUsedError;
-  bool get validatedPassword => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -31,8 +29,6 @@ mixin _$LoginState {
             EmailAddress emailAddress,
             Password password,
             bool isSubmitting,
-            bool validatedEmail,
-            bool validatedPassword,
             String? errorMessage)
         initial,
   }) =>
@@ -44,8 +40,6 @@ mixin _$LoginState {
             EmailAddress emailAddress,
             Password password,
             bool isSubmitting,
-            bool validatedEmail,
-            bool validatedPassword,
             String? errorMessage)?
         initial,
   }) =>
@@ -57,8 +51,6 @@ mixin _$LoginState {
             EmailAddress emailAddress,
             Password password,
             bool isSubmitting,
-            bool validatedEmail,
-            bool validatedPassword,
             String? errorMessage)?
         initial,
     required TResult orElse(),
@@ -66,39 +58,37 @@ mixin _$LoginState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginState value) initial,
+    required TResult Function(_SignInFormState value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoginState value)? initial,
+    TResult? Function(_SignInFormState value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoginState value)? initial,
+    TResult Function(_SignInFormState value)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginStateCopyWith<LoginState> get copyWith =>
+  $SignInFormStateCopyWith<SignInFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $SignInFormStateCopyWith<$Res> {
+  factory $SignInFormStateCopyWith(
+          SignInFormState value, $Res Function(SignInFormState) then) =
+      _$SignInFormStateCopyWithImpl<$Res, SignInFormState>;
   @useResult
   $Res call(
       {AutovalidateMode showValidateMessageMode,
       EmailAddress emailAddress,
       Password password,
       bool isSubmitting,
-      bool validatedEmail,
-      bool validatedPassword,
       String? errorMessage});
 
   $EmailAddressCopyWith<$Res> get emailAddress;
@@ -106,9 +96,9 @@ abstract class $LoginStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$SignInFormStateCopyWithImpl<$Res, $Val extends SignInFormState>
+    implements $SignInFormStateCopyWith<$Res> {
+  _$SignInFormStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -122,8 +112,6 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? emailAddress = null,
     Object? password = null,
     Object? isSubmitting = null,
-    Object? validatedEmail = null,
-    Object? validatedPassword = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -142,14 +130,6 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      validatedEmail: null == validatedEmail
-          ? _value.validatedEmail
-          : validatedEmail // ignore: cast_nullable_to_non_nullable
-              as bool,
-      validatedPassword: null == validatedPassword
-          ? _value.validatedPassword
-          : validatedPassword // ignore: cast_nullable_to_non_nullable
               as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -176,11 +156,11 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
 }
 
 /// @nodoc
-abstract class _$$_LoginStateCopyWith<$Res>
-    implements $LoginStateCopyWith<$Res> {
-  factory _$$_LoginStateCopyWith(
-          _$_LoginState value, $Res Function(_$_LoginState) then) =
-      __$$_LoginStateCopyWithImpl<$Res>;
+abstract class _$$_SignInFormStateCopyWith<$Res>
+    implements $SignInFormStateCopyWith<$Res> {
+  factory _$$_SignInFormStateCopyWith(
+          _$_SignInFormState value, $Res Function(_$_SignInFormState) then) =
+      __$$_SignInFormStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -188,8 +168,6 @@ abstract class _$$_LoginStateCopyWith<$Res>
       EmailAddress emailAddress,
       Password password,
       bool isSubmitting,
-      bool validatedEmail,
-      bool validatedPassword,
       String? errorMessage});
 
   @override
@@ -199,11 +177,11 @@ abstract class _$$_LoginStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LoginStateCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoginState>
-    implements _$$_LoginStateCopyWith<$Res> {
-  __$$_LoginStateCopyWithImpl(
-      _$_LoginState _value, $Res Function(_$_LoginState) _then)
+class __$$_SignInFormStateCopyWithImpl<$Res>
+    extends _$SignInFormStateCopyWithImpl<$Res, _$_SignInFormState>
+    implements _$$_SignInFormStateCopyWith<$Res> {
+  __$$_SignInFormStateCopyWithImpl(
+      _$_SignInFormState _value, $Res Function(_$_SignInFormState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -213,11 +191,9 @@ class __$$_LoginStateCopyWithImpl<$Res>
     Object? emailAddress = null,
     Object? password = null,
     Object? isSubmitting = null,
-    Object? validatedEmail = null,
-    Object? validatedPassword = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$_LoginState(
+    return _then(_$_SignInFormState(
       showValidateMessageMode: null == showValidateMessageMode
           ? _value.showValidateMessageMode
           : showValidateMessageMode // ignore: cast_nullable_to_non_nullable
@@ -234,14 +210,6 @@ class __$$_LoginStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      validatedEmail: null == validatedEmail
-          ? _value.validatedEmail
-          : validatedEmail // ignore: cast_nullable_to_non_nullable
-              as bool,
-      validatedPassword: null == validatedPassword
-          ? _value.validatedPassword
-          : validatedPassword // ignore: cast_nullable_to_non_nullable
-              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -252,14 +220,12 @@ class __$$_LoginStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoginState implements _LoginState {
-  _$_LoginState(
+class _$_SignInFormState implements _SignInFormState {
+  _$_SignInFormState(
       {required this.showValidateMessageMode,
       required this.emailAddress,
       required this.password,
       required this.isSubmitting,
-      required this.validatedEmail,
-      required this.validatedPassword,
       required this.errorMessage});
 
   @override
@@ -271,22 +237,18 @@ class _$_LoginState implements _LoginState {
   @override
   final bool isSubmitting;
   @override
-  final bool validatedEmail;
-  @override
-  final bool validatedPassword;
-  @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'LoginState.initial(showValidateMessageMode: $showValidateMessageMode, emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, validatedEmail: $validatedEmail, validatedPassword: $validatedPassword, errorMessage: $errorMessage)';
+    return 'SignInFormState.initial(showValidateMessageMode: $showValidateMessageMode, emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoginState &&
+            other is _$_SignInFormState &&
             (identical(
                     other.showValidateMessageMode, showValidateMessageMode) ||
                 other.showValidateMessageMode == showValidateMessageMode) &&
@@ -296,30 +258,19 @@ class _$_LoginState implements _LoginState {
                 other.password == password) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
-            (identical(other.validatedEmail, validatedEmail) ||
-                other.validatedEmail == validatedEmail) &&
-            (identical(other.validatedPassword, validatedPassword) ||
-                other.validatedPassword == validatedPassword) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      showValidateMessageMode,
-      emailAddress,
-      password,
-      isSubmitting,
-      validatedEmail,
-      validatedPassword,
-      errorMessage);
+  int get hashCode => Object.hash(runtimeType, showValidateMessageMode,
+      emailAddress, password, isSubmitting, errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
-      __$$_LoginStateCopyWithImpl<_$_LoginState>(this, _$identity);
+  _$$_SignInFormStateCopyWith<_$_SignInFormState> get copyWith =>
+      __$$_SignInFormStateCopyWithImpl<_$_SignInFormState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -329,13 +280,11 @@ class _$_LoginState implements _LoginState {
             EmailAddress emailAddress,
             Password password,
             bool isSubmitting,
-            bool validatedEmail,
-            bool validatedPassword,
             String? errorMessage)
         initial,
   }) {
     return initial(showValidateMessageMode, emailAddress, password,
-        isSubmitting, validatedEmail, validatedPassword, errorMessage);
+        isSubmitting, errorMessage);
   }
 
   @override
@@ -346,13 +295,11 @@ class _$_LoginState implements _LoginState {
             EmailAddress emailAddress,
             Password password,
             bool isSubmitting,
-            bool validatedEmail,
-            bool validatedPassword,
             String? errorMessage)?
         initial,
   }) {
     return initial?.call(showValidateMessageMode, emailAddress, password,
-        isSubmitting, validatedEmail, validatedPassword, errorMessage);
+        isSubmitting, errorMessage);
   }
 
   @override
@@ -363,15 +310,13 @@ class _$_LoginState implements _LoginState {
             EmailAddress emailAddress,
             Password password,
             bool isSubmitting,
-            bool validatedEmail,
-            bool validatedPassword,
             String? errorMessage)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
       return initial(showValidateMessageMode, emailAddress, password,
-          isSubmitting, validatedEmail, validatedPassword, errorMessage);
+          isSubmitting, errorMessage);
     }
     return orElse();
   }
@@ -379,7 +324,7 @@ class _$_LoginState implements _LoginState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginState value) initial,
+    required TResult Function(_SignInFormState value) initial,
   }) {
     return initial(this);
   }
@@ -387,7 +332,7 @@ class _$_LoginState implements _LoginState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoginState value)? initial,
+    TResult? Function(_SignInFormState value)? initial,
   }) {
     return initial?.call(this);
   }
@@ -395,7 +340,7 @@ class _$_LoginState implements _LoginState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoginState value)? initial,
+    TResult Function(_SignInFormState value)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -405,15 +350,13 @@ class _$_LoginState implements _LoginState {
   }
 }
 
-abstract class _LoginState implements LoginState {
-  factory _LoginState(
+abstract class _SignInFormState implements SignInFormState {
+  factory _SignInFormState(
       {required final AutovalidateMode showValidateMessageMode,
       required final EmailAddress emailAddress,
       required final Password password,
       required final bool isSubmitting,
-      required final bool validatedEmail,
-      required final bool validatedPassword,
-      required final String? errorMessage}) = _$_LoginState;
+      required final String? errorMessage}) = _$_SignInFormState;
 
   @override
   AutovalidateMode get showValidateMessageMode;
@@ -424,13 +367,9 @@ abstract class _LoginState implements LoginState {
   @override
   bool get isSubmitting;
   @override
-  bool get validatedEmail;
-  @override
-  bool get validatedPassword;
-  @override
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
+  _$$_SignInFormStateCopyWith<_$_SignInFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
