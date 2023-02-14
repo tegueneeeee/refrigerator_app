@@ -1,5 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
+import 'package:flutter_app/domain/auth/entity/user.dart' as entity;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
@@ -14,6 +14,19 @@ class AuthHelper {
     this._firebaseAuth,
     this._googleSignIn,
   );
+
+  Future<Result<entity.User>> getSignedInUser() async {
+    try {
+      final currentUser = _firebaseAuth.currentUser;
+      if (currentUser != null) {
+        return Result.sucess(entity.User.fromUniqueString(currentUser.uid));
+      } else {
+        return Result.failure("User is Null");
+      }
+    } catch (e) {
+      return Result.failure("$e");
+    }
+  }
 
   Future<Result<Unit>> createUserWithEmailAndPassword({
     required EmailAddress emailAddress,
@@ -58,29 +71,20 @@ class AuthHelper {
       );
       return _firebaseAuth
           .signInWithCredential(authCredential)
-          .then((value) => Result.sucess(unit));
+          .then((_) => Result.sucess(unit));
     } catch (e) {
       return Result.failure("$e");
     }
   }
 
-  Future<Result<EmailAddress>> validateEmailAddress({
-    required EmailAddress emailAddress,
-  }) async {
-    if (emailAddress.isValid) {
-      return Result.sucess(emailAddress);
-    } else {
-      return Result.failure("");
-    }
-  }
-
-  Future<Result<Password>> validatePassword({
-    required Password password,
-  }) async {
-    if (password.isValid) {
-      return Result.sucess(password);
-    } else {
-      return Result.failure("");
+  Future<Result<Unit>> signOut() async {
+    try {
+      return Future.wait([
+        _googleSignIn.signOut(),
+        _firebaseAuth.signOut(),
+      ]).then((_) => Result.sucess(unit));
+    } catch (e) {
+      return Result.failure("$e");
     }
   }
 }

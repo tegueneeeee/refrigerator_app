@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_app/domain/auth/entity/user.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
 import 'package:flutter_app/infrastructure/auth/data_source/auth_helper.dart';
@@ -11,6 +12,16 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(
     this._authHelper,
   );
+
+  @override
+  Future<Result<User>> getSignedInUser() async {
+    final result = await _authHelper.getSignedInUser();
+    return result.when(
+      sucess: (data) => Result.sucess(data as User),
+      failure: (message) => Result.failure(message),
+    );
+  }
+
   @override
   Future<Result<Unit>> registerWIthEmailAndPassword({
     required EmailAddress emailAddress,
@@ -51,24 +62,10 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Result<bool>> validatorEmailAddress({
-    required EmailAddress emailAddress,
-  }) async {
-    final result =
-        await _authHelper.validateEmailAddress(emailAddress: emailAddress);
+  Future<Result<Unit>> signOut() async {
+    final result = await _authHelper.signOut();
     return result.when(
-      sucess: (data) => Result.sucess(data.isValid),
-      failure: (message) => Result.failure(message),
-    );
-  }
-
-  @override
-  Future<Result<bool>> validatorPassword({
-    required Password password,
-  }) async {
-    final result = await _authHelper.validatePassword(password: password);
-    return result.when(
-      sucess: (data) => Result.sucess(data.isValid),
+      sucess: (data) => Result.sucess(data),
       failure: (message) => Result.failure(message),
     );
   }

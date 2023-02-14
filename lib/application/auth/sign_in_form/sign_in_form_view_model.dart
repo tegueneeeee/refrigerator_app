@@ -71,7 +71,11 @@ class SignInFormViewModel with ChangeNotifier {
       password: _state.password,
     );
     result.when(
-      sucess: (_) => {},
+      sucess: (_) => {
+        _state = state.copyWith(
+          isSubmitting: true,
+        ),
+      },
       failure: (message) => {
         _state = state.copyWith(
           showValidateMessageMode: AutovalidateMode.always,
@@ -85,7 +89,11 @@ class SignInFormViewModel with ChangeNotifier {
   Future<void> _signInWithGooglePressed() async {
     final result = await loginUseCases.signInWithGoogle();
     result.when(
-      sucess: (_) => {},
+      sucess: (_) => {
+        _state = state.copyWith(
+          isSubmitting: true,
+        ),
+      },
       failure: (message) => {
         _state = state.copyWith(errorMessage: message),
       },
