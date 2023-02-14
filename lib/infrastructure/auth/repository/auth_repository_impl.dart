@@ -17,7 +17,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Result<User>> getSignedInUser() async {
     final result = await _authHelper.getSignedInUser();
     return result.when(
-      sucess: (data) => Result.sucess(data as User),
+      sucess: (data) => Result.sucess(data),
       failure: (message) => Result.failure(message),
     );
   }

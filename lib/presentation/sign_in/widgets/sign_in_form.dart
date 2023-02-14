@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_event.dart';
-import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_view_model.dart';
+import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_provider.dart';
 import 'package:flutter_app/presentation/core/snack_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -9,20 +9,20 @@ class SignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<SignInFormViewModel>();
-    if (viewModel.state.errorMessage != null) {
+    final provider = context.watch<SignInFormProvider>();
+    if (provider.state.errorMessage != null) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) {
           displaySnackBar(
             context,
-            errorMessage: viewModel.state.errorMessage!,
+            errorMessage: provider.state.errorMessage!,
           );
-          viewModel.onEvent(const SignInFormEvent.setErrorMessageNull());
+          provider.onEvent(const SignInFormEvent.setErrorMessageNull());
         },
       );
     }
     return Form(
-      autovalidateMode: viewModel.state.showValidateMessageMode,
+      autovalidateMode: provider.state.showValidateMessageMode,
       child: ListView(
         children: [
           TextFormField(
@@ -31,11 +31,11 @@ class SignInForm extends StatelessWidget {
               label: Text('Email'),
             ),
             autocorrect: false,
-            onChanged: (value) => viewModel.onEvent(
+            onChanged: (value) => provider.onEvent(
               SignInFormEvent.emailChanged(value),
             ),
             validator: (_) {
-              if (viewModel.state.emailAddress.isValid) {
+              if (provider.state.emailAddress.isValid) {
                 return null;
               } else {
                 return 'Invalid Email';
@@ -50,11 +50,11 @@ class SignInForm extends StatelessWidget {
             ),
             autocorrect: false,
             obscureText: true,
-            onChanged: (value) => viewModel.onEvent(
+            onChanged: (value) => provider.onEvent(
               SignInFormEvent.passwordChanged(value),
             ),
             validator: (_) {
-              if (viewModel.state.password.isValid) {
+              if (provider.state.password.isValid) {
                 return null;
               } else {
                 return 'Invalid Password';
@@ -67,7 +67,7 @@ class SignInForm extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () => {
-                    viewModel.onEvent(
+                    provider.onEvent(
                       const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                     )
                   },
@@ -77,7 +77,7 @@ class SignInForm extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () => {
-                    viewModel.onEvent(
+                    provider.onEvent(
                       const SignInFormEvent
                           .registerWithEmailAndPasswordPressed(),
                     )
@@ -89,7 +89,7 @@ class SignInForm extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => {
-              viewModel.onEvent(
+              provider.onEvent(
                 const SignInFormEvent.signInWithGooglePressed(),
               )
             },

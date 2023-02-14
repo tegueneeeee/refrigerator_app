@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_event.dart';
 import 'package:flutter_app/application/auth/sign_in_form/sign_in_form_state.dart';
-import 'package:flutter_app/application/use_case/login_use_cases.dart';
+import 'package:flutter_app/application/use_case/auth_use_cases.dart';
 import 'package:flutter_app/domain/auth/value/email_address.dart';
 import 'package:flutter_app/domain/auth/value/password.dart';
 
-class SignInFormViewModel with ChangeNotifier {
-  final LoginUseCases loginUseCases;
+class SignInFormProvider with ChangeNotifier {
+  final AuthUseCases authUseCases;
 
-  SignInFormViewModel(this.loginUseCases);
+  SignInFormProvider(this.authUseCases);
 
   SignInFormState _state = SignInFormState.initial(
     showValidateMessageMode: AutovalidateMode.disabled,
@@ -50,7 +50,8 @@ class SignInFormViewModel with ChangeNotifier {
   }
 
   Future<void> _registerWithEmailAndPasswordPressed() async {
-    final result = await loginUseCases.registerWithEmailAndPassword(
+    final result =
+        await authUseCases.signInFormUseCases.registerWithEmailAndPassword(
       emailAddress: _state.emailAddress,
       password: _state.password,
     );
@@ -66,7 +67,8 @@ class SignInFormViewModel with ChangeNotifier {
   }
 
   Future<void> _signInWithEmailAndPasswordPressed() async {
-    final result = await loginUseCases.signInWithEmailAndPassword(
+    final result =
+        await authUseCases.signInFormUseCases.signInWithEmailAndPassword(
       emailAddress: _state.emailAddress,
       password: _state.password,
     );
@@ -87,7 +89,7 @@ class SignInFormViewModel with ChangeNotifier {
   }
 
   Future<void> _signInWithGooglePressed() async {
-    final result = await loginUseCases.signInWithGoogle();
+    final result = await authUseCases.signInFormUseCases.signInWithGoogle();
     result.when(
       sucess: (_) => {
         _state = state.copyWith(
