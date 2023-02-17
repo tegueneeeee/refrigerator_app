@@ -1,3 +1,5 @@
+import 'package:flutter_app/domain/auth/value/auth_value_validators.dart';
+import 'package:flutter_app/domain/core/value_result.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'password.freezed.dart';
@@ -11,7 +13,11 @@ class Password with _$Password {
 
   factory Password.empty() => const Password(value: "");
 
-  bool get isValid => value.length >= 6;
+  ValueResult<String> get validate {
+    return validateStringNotEmpty(value).maybeWhen(
+        validate: (validatedValue) => validatePassword(validatedValue),
+        orElse: () => validateStringNotEmpty(value));
+  }
 }
 
 class PasswordConverter implements JsonConverter<Password, String> {

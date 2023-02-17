@@ -24,6 +24,7 @@ class SignInForm extends StatelessWidget {
     return Form(
       autovalidateMode: provider.state.showValidateMessageMode,
       child: ListView(
+        padding: const EdgeInsets.all(8),
         children: [
           TextFormField(
             decoration: const InputDecoration(
@@ -35,11 +36,10 @@ class SignInForm extends StatelessWidget {
               SignInFormEvent.emailChanged(value),
             ),
             validator: (_) {
-              if (provider.state.emailAddress.isValid) {
-                return null;
-              } else {
-                return 'Invalid Email';
-              }
+              return provider.state.emailAddress.validate.whenOrNull(
+                validate: (_) => null,
+                authFailure: (failure) => failure.message,
+              );
             },
           ),
           const SizedBox(height: 8),
@@ -54,35 +54,40 @@ class SignInForm extends StatelessWidget {
               SignInFormEvent.passwordChanged(value),
             ),
             validator: (_) {
-              if (provider.state.password.isValid) {
-                return null;
-              } else {
-                return 'Invalid Password';
-              }
+              return provider.state.password.validate.whenOrNull(
+                validate: (_) => null,
+                authFailure: (failure) => failure.message,
+              );
             },
           ),
           const SizedBox(height: 8),
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(
+                child: TextButton(
                   onPressed: () => {
                     provider.onEvent(
                       const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                     )
                   },
-                  child: const Text('SIGN IN'),
+                  child: const Text(
+                    'SIGN IN',
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
               Expanded(
-                child: ElevatedButton(
+                child: TextButton(
                   onPressed: () => {
                     provider.onEvent(
                       const SignInFormEvent
                           .registerWithEmailAndPasswordPressed(),
                     )
                   },
-                  child: const Text('REGISTER'),
+                  child: const Text(
+                    'REGISTER',
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ],
@@ -95,6 +100,12 @@ class SignInForm extends StatelessWidget {
             },
             child: const Text('SIGN IN WITH GOOGLE'),
           ),
+          if (provider.state.isSubmitting) ...[
+            const SizedBox(height: 8),
+            const LinearProgressIndicator(
+              value: null,
+            )
+          ],
         ],
       ),
     );

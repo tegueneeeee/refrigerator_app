@@ -1,3 +1,5 @@
+import 'package:flutter_app/domain/auth/value/auth_value_validators.dart';
+import 'package:flutter_app/domain/core/value_result.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'email_address.freezed.dart';
 
@@ -14,15 +16,20 @@ abstract class EmailAddress with _$EmailAddress {
 
   factory EmailAddress.empty() => const EmailAddress(value: "");
 
-  bool get isValid => value.isNotEmpty && RegExp(emailRegex).hasMatch(value);
+  ValueResult<String> get validate {
+    return validateStringNotEmpty(value).maybeWhen(
+      validate: (validatedValue) => validateEmailAddress(validatedValue),
+      orElse: () => validateStringNotEmpty(value),
+    );
+  }
 }
 
 class EmailAddressConverter implements JsonConverter<EmailAddress, String> {
   const EmailAddressConverter();
 
   @override
-  EmailAddress fromJson(String value) {
-    return EmailAddress(value: value);
+  EmailAddress fromJson(String input) {
+    return EmailAddress(value: input);
   }
 
   @override
